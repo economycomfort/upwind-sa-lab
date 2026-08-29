@@ -1,0 +1,35 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Kubernetes / kubeconfig
+kubeconfig*
+*.kubeconfig
+.kube/
+
+# AWS
+.aws/
+*.pem
+*.pfx
+
+# Terraform (if used)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+
+# Secrets / env
+.env
+*.env
+secrets.yaml
+secrets/
+
+# Logs / temp output
+*.log
+tmp/
