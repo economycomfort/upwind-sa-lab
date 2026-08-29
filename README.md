@@ -14,8 +14,8 @@ This repo holds the build and presentation assets for that exercise:
 ## Environment
 
 - **Cloud:** AWS EKS
-- **Target application:** [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/) — intentionally vulnerable, deployed for authorized demonstration purposes only
-- **Cluster is ephemeral** — provisioned for build/rehearsal sessions and torn down between them; nothing here should be treated as a persistent or production environment
+- **Target application:** [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), intentionally vulnerable, deployed for authorized demonstration purposes only
+- **Cluster is ephemeral**, provisioned for build/rehearsal sessions and torn down between them; nothing here should be treated as a persistent or production environment
 
 ## Structure
 
@@ -31,4 +31,4 @@ This repo holds the build and presentation assets for that exercise:
 
 ## Status
 
-Active — build in progress ahead of presentation to Upwind.
+Active. Build in progress ahead of presentation to Upwind.
