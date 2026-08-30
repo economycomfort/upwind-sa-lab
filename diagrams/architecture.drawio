@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2026-08-30T00:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram name="Upwind Lab Architecture" id="upwind-lab-arch">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Internet / Attacker -->
+        <mxCell id="internet" value="Internet&#10;(browser / curl)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- AWS EKS Cluster boundary -->
+        <mxCell id="eks" value="AWS EKS Cluster (upwind-lab)" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=none;strokeColor=#232F3E;fontSize=14;fontStyle=1;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="800" height="500" as="geometry" />
+        </mxCell>
+
+        <!-- ingress-nginx -->
+        <mxCell id="ingress" value="ingress-nginx&#10;(LoadBalancer Service)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="440" y="200" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Namespace: juice-shop -->
+        <mxCell id="ns-juice" value="Namespace: juice-shop" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="320" width="340" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="svc" value="Service: juice-shop-svc&#10;(ClusterIP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="190" y="370" width="280" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dep" value="Deployment: juice-shop&#10;(OWASP Juice Shop container)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="190" y="450" width="280" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="netpol" value="(optional) NetworkPolicy&#10;restricting egress" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="190" y="525" width="280" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Namespace: security-tooling -->
+        <mxCell id="ns-sec" value="Namespace: security-tooling" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="320" width="300" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="falco" value="DaemonSet: Falco&#10;runtime detection&#10;(reads kernel/eBPF events)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="400" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1" source="internet" target="ingress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1" source="ingress" target="svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;" edge="1" parent="1" source="svc" target="dep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e4" value="monitors syscalls&#10;cluster-wide (eBPF)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;fontSize=10;fontColor=#666666;strokeColor=#666666;" edge="1" parent="1" source="falco" target="dep">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
