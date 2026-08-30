@@ -49,7 +49,7 @@
         <mxCell id="node1-ec2" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3D;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;fontFamily=Helvetica;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" value="Amazon EC2" vertex="1">
           <mxGeometry height="46" width="46" x="558" y="843" as="geometry" />
         </mxCell>
-        <mxCell id="node1-falco" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbe1e1;strokeColor=#af4d4d;strokeWidth=2;fontSize=13;fontFamily=Helvetica;" value="&lt;b&gt;Falco pod&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:#af4d4d;&quot;&gt;DaemonSet — one per node&lt;/span&gt;" vertex="1">
+        <mxCell id="node1-falco" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbe1e1;strokeColor=#af4d4d;strokeWidth=2;fontSize=13;fontFamily=Helvetica;" value="&lt;b&gt;Falco pod&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px; color: rgb(175, 77, 77);&quot;&gt;DaemonSet: one per node&lt;/span&gt;" vertex="1">
           <mxGeometry height="70" width="420" x="170" y="927" as="geometry" />
         </mxCell>
         <mxCell id="node1-note" parent="1" style="text;html=1;fontSize=11;fontColor=#999999;fontFamily=Helvetica;align=center;verticalAlign=middle;whiteSpace=wrap;" value="&lt;b&gt;+ whichever of ingress-nginx / juice-shop the scheduler places here&lt;/b&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp;(not pinned)&lt;/b&gt;&lt;/div&gt;" vertex="1">
@@ -61,7 +61,7 @@
         <mxCell id="node2-ec2" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3D;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;fontFamily=Helvetica;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" value="Amazon EC2" vertex="1">
           <mxGeometry height="46" width="46" x="1098" y="843" as="geometry" />
         </mxCell>
-        <mxCell id="node2-falco" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbe1e1;strokeColor=#af4d4d;strokeWidth=2;fontSize=13;fontFamily=Helvetica;" value="&lt;b&gt;Falco pod&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:#af4d4d;&quot;&gt;DaemonSet — one per node&lt;/span&gt;" vertex="1">
+        <mxCell id="node2-falco" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbe1e1;strokeColor=#af4d4d;strokeWidth=2;fontSize=13;fontFamily=Helvetica;" value="&lt;b&gt;Falco pod&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px; color: rgb(175, 77, 77);&quot;&gt;DaemonSet: one per node&lt;/span&gt;" vertex="1">
           <mxGeometry height="70" width="420" x="710" y="927" as="geometry" />
         </mxCell>
         <mxCell id="node2-note" parent="1" style="text;html=1;fontSize=11;fontColor=#999999;fontFamily=Helvetica;align=center;verticalAlign=middle;whiteSpace=wrap;" value="&lt;b&gt;+ whichever of ingress-nginx / juice-shop the scheduler places here&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;(not pinned)&lt;/b&gt;&lt;/div&gt;" vertex="1">
