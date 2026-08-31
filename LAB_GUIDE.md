@@ -43,7 +43,7 @@ This is the namespace-level view. The presentation diagram (`diagrams/architectu
 
 ## Lab Setup
 
-Primary interface: `scripts/bootstrap.sh` and `scripts/teardown.sh` in the repo (`sandbox:~/upwind-lab/scripts/`). Everything below is what those two scripts actually do, kept here as reference/explanation, not as a manual alternative to running them.
+Primary interface: `scripts/bootstrap.sh` and `scripts/teardown.sh` in the repo (`scripts/`). Everything below is what those two scripts actually do, kept here as reference/explanation, not as a manual alternative to running them.
 
 ### Spin up
 
