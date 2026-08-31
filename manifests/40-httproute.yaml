@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: juice-shop-route
+  namespace: juice-shop
+spec:
+  parentRefs:
+    - name: juice-shop-gateway
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: juice-shop-svc
+          port: 80
