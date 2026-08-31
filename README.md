@@ -32,9 +32,7 @@ This repo holds the build and presentation assets for that exercise:
 
 ## Recordings
 
-Exploit demo recordings (video) are too large for this repo and live in Google Drive instead:
-
-(https://drive.google.com/drive/folders/1dxv0Gircm8qBIaSG3OWoAefVsSxF1Y1N?usp=sharing)
+Exploit demo recordings (video) are too large for this repo and live in Google Drive instead: [click here](https://drive.google.com/drive/folders/1dxv0Gircm8qBIaSG3OWoAefVsSxF1Y1N?usp=sharing)
 
 
 ## Spin up
@@ -73,13 +71,14 @@ Verify no orphaned load balancers remain in the AWS console after teardown regar
 
 ## Status
 
-Re-architecting ingress: `ingress-nginx` (originally used) was found to be officially retired as of March 31, 2026. Migrating to Gateway API via the AWS Load Balancer Controller before rebuilding and re-recording.
+Ingress re-architected: `ingress-nginx` (originally used) was found to be officially retired as of March 31, 2026. Migrated to Gateway API via the AWS Load Balancer Controller; rebuilt and validated end to end.
 
-- [x] A01:2021 Broken Access Control (IDOR via basket ID), demoed and recorded (pre-migration, see Recordings)
-- [x] A03:2021 Injection (SQL injection login bypass), demoed and recorded (pre-migration, see Recordings)
-- [x] A05:2021 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded (pre-migration, see Recordings)
-- [ ] Re-record exploit demos against the rebuilt cluster (new ALB address, Gateway API instead of ingress-nginx)
+- [x] A01:2021 Broken Access Control (IDOR via basket ID), demoed and recorded (see Recordings)
+- [x] A03:2021 Injection (SQL injection login bypass), demoed and recorded (see Recordings)
+- [x] A05:2021 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded (see Recordings)
 
-Architecture diagram updated to reflect the new ingress path (t3.small, Gateway API / AWS Load Balancer Controller). Bootstrap/teardown steps converted into scripts (`scripts/bootstrap.sh`, `scripts/teardown.sh`).
+Recordings remain valid despite the ingress migration: all three exploits demonstrate application-layer behavior via curl/browser against the app itself, they don't depend on or showcase the ingress mechanism, only the LB hostname changed.
 
-Remaining: rebuild cluster on Gateway API, re-verify all three exploits, re-record, final deck assembly, full rehearsal run-through, cluster teardown after recording.
+Architecture diagram updated to reflect the current ingress path (t3.small, Gateway API / AWS Load Balancer Controller). Bootstrap/teardown steps converted into scripts (`scripts/bootstrap.sh`, `scripts/teardown.sh`).
+
+Remaining: final deck assembly, full rehearsal run-through, cluster teardown after recording.
