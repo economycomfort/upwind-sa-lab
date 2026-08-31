@@ -47,8 +47,10 @@ Primary interface: `scripts/bootstrap.sh` and `scripts/teardown.sh` in the repo 
 
 ### Spin up
 
+Clone this repo, then:
+
 ```bash
-cd ~/upwind-lab
+cd ~/upwind-sa-lab
 ./scripts/bootstrap.sh
 ```
 

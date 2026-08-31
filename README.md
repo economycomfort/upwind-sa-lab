@@ -84,3 +84,22 @@ Recordings remain valid despite the ingress migration: all three exploits demons
 Architecture diagram updated to reflect the current ingress path (t3.small, Gateway API / AWS Load Balancer Controller). Bootstrap/teardown steps converted into scripts (`scripts/bootstrap.sh`, `scripts/teardown.sh`).
 
 Remaining: final deck assembly, full rehearsal run-through, cluster teardown after recording.
+
+## AI Disclosure from the Author
+AI ([Claude](https://claude.ai) Sonnet 5 and Haiku 5) was used during the creation, test, and documentation of this lab.  
+
+AI is a powerful tool, and I am open about its use:
+
+- Distilling lab requirements into mappable demos
+- Help with crafting and validating repeatable lab setup/teardown (with significant iteration)
+- Understanding k8s concepts ("Teach me about DaemonSets and provide a self-guided demo using `kind`")
+- Critiquing early lab design
+- Distilling scratch notes from testing and folding into the overall lab plan.
+- Documentation edits, formatting, wording, and cleanup.
+- Creating a "branding feel" for the presentation
+- Scripting advice ("What's the best way to obfuscate my AWS Account ID from bootstrap.sh before its pushed to Github?")
+- Help with analyzing transcripts for feedback on flow, content, and opportunities to improve.
+
+AI cannot replace concept mastery or fill in for decades of technology consultation and field pre-sales experience to a technically adept market.  However, AI enables me to deliver an uplevelled deliverable in comparison to what would be provided without its use, and on a much quicker timeframe.  With this, I acknowledge that the end result is mine, and mistakes in its output are mine, and that I have done as much due diligence as possible to ensure quality output that represents my skillset.
+
+It's with this mindset that I approach the use of AI as a tool in my bag, and I would hope that other practitioners are viewing its use within similar constraints. 
