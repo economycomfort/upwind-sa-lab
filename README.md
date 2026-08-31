@@ -37,7 +37,8 @@ One-time per cluster, then reusable across rebuilds:
 # 1. Provision the cluster
 eksctl create cluster \
   --name upwind-lab --region us-east-1 --version 1.36 \
-  --nodegroup-name standard-workers --node-type t3.small --nodes 2 --managed
+  --nodegroup-name standard-workers --node-type t3.small --nodes 2 --managed \
+  --vpc-nat-mode Single
 
 # 2. Associate an OIDC provider (needed for IRSA)
 eksctl utils associate-iam-oidc-provider \
