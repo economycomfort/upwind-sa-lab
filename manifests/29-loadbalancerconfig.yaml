@@ -1,0 +1,9 @@
+apiVersion: gateway.k8s.aws/v1
+kind: LoadBalancerConfiguration
+metadata:
+  name: juice-shop-lbconfig
+  namespace: juice-shop
+spec:
+  scheme: internet-facing
+  defaultTargetGroupConfiguration:
+    name: juice-shop-tgc

@@ -1,0 +1,8 @@
+apiVersion: gateway.k8s.aws/v1
+kind: TargetGroupConfiguration
+metadata:
+  name: juice-shop-tgc
+  namespace: juice-shop
+spec:
+  defaultConfiguration:
+    targetType: ip

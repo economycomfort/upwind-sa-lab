@@ -1,15 +1,24 @@
 # Requires the AWS Load Balancer Controller and the Gateway API CRDs installed
-# on the cluster first (see README.md 'Spin up' section / lab guide Step 2).
+# on the cluster first (see README.md 'Spin up' section / bootstrap.sh).
+#
+# Scheme and target-type are set via the LoadBalancerConfiguration /
+# TargetGroupConfiguration CRDs referenced below, not via the
+# alb.ingress.kubernetes.io/* annotations. Those annotations only apply to
+# classic Ingress objects and are silently ignored on Gateway API resources,
+# which defaults to instance-target-type and requires a NodePort/LoadBalancer
+# Service rather than our ClusterIP Service.
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: juice-shop-gateway
   namespace: juice-shop
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
 spec:
   gatewayClassName: aws-alb
+  infrastructure:
+    parametersRef:
+      group: gateway.k8s.aws
+      kind: LoadBalancerConfiguration
+      name: juice-shop-lbconfig
   listeners:
     - name: http
       protocol: HTTP

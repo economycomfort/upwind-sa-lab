@@ -33,3 +33,6 @@ secrets/
 # Logs / temp output
 *.log
 tmp/
+
+# Bootstrap script artifacts
+iam-policy.json

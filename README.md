@@ -30,6 +30,13 @@ This repo holds the build and presentation assets for that exercise:
 └── README.md
 ```
 
+## Recordings
+
+Exploit demo recordings (video) are too large for this repo and live in Google Drive instead:
+
+(https://drive.google.com/drive/folders/1dxv0Gircm8qBIaSG3OWoAefVsSxF1Y1N?usp=sharing)
+
+
 ## Spin up
 
 ```bash
@@ -44,7 +51,7 @@ What it does, step by step (see the script itself for the exact commands):
 2. Associate an OIDC provider (needed for IRSA)
 3. Create the AWS Load Balancer Controller's IAM policy
 4. Create the IRSA service account bound to that policy
-5. Install the AWS Load Balancer Controller
+5. Install the AWS Load Balancer Controller, then wait for it to actually be ready (its admission webhook needs live pod endpoints before anything else can apply Service/Gateway objects)
 6. Install the Gateway API CRDs
 7. Install Falco
 8. Deploy the app (`kubectl apply -f manifests/`)
@@ -68,9 +75,9 @@ Verify no orphaned load balancers remain in the AWS console after teardown regar
 
 Re-architecting ingress: `ingress-nginx` (originally used) was found to be officially retired as of March 31, 2026. Migrating to Gateway API via the AWS Load Balancer Controller before rebuilding and re-recording.
 
-- [x] A01:2021 Broken Access Control (IDOR via basket ID), demoed and recorded
-- [x] A03:2021 Injection (SQL injection login bypass), demoed and recorded
-- [x] A05:2021 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded
+- [x] A01:2021 Broken Access Control (IDOR via basket ID), demoed and recorded (pre-migration, see Recordings)
+- [x] A03:2021 Injection (SQL injection login bypass), demoed and recorded (pre-migration, see Recordings)
+- [x] A05:2021 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded (pre-migration, see Recordings)
 - [ ] Re-record exploit demos against the rebuilt cluster (new ALB address, Gateway API instead of ingress-nginx)
 
 Architecture diagram updated to reflect the new ingress path (t3.small, Gateway API / AWS Load Balancer Controller). Bootstrap/teardown steps converted into scripts (`scripts/bootstrap.sh`, `scripts/teardown.sh`).
