@@ -9,7 +9,7 @@ This repo holds the build and presentation assets for that exercise:
 - Kubernetes manifests (namespace, deployment, service, Gateway API routing, security tooling)
 - Architecture diagram (draw.io source + SVG export)
 - Presentation slides / speaker notes / screenshots
-- Supporting scripts or configuration used to stand up and tear down the lab
+- Scripts to stand up and tear down the lab (`scripts/`)
 
 ## Environment
 
@@ -26,82 +26,43 @@ This repo holds the build and presentation assets for that exercise:
 ├── manifests/       # Kubernetes YAML (namespace, deployment, service, gateway, httproute)
 ├── diagrams/        # Architecture diagram (drawio source + SVG export)
 ├── presentation/    # Slides, speaker notes, screenshots
+├── scripts/         # bootstrap.sh, teardown.sh
 └── README.md
 ```
 
 ## Spin up
 
-One-time per cluster, then reusable across rebuilds:
-
 ```bash
-# 1. Provision the cluster
-eksctl create cluster \
-  --name upwind-lab --region us-east-1 --version 1.36 \
-  --nodegroup-name standard-workers --node-type t3.small --nodes 2 --managed \
-  --vpc-nat-mode Single
-
-# 2. Associate an OIDC provider (needed for IRSA)
-eksctl utils associate-iam-oidc-provider \
-  --cluster upwind-lab --region us-east-1 --approve
-
-# 3. Create the AWS Load Balancer Controller's IAM policy
-curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json
-aws iam create-policy \
-  --policy-name AWSLoadBalancerControllerIAMPolicy \
-  --policy-document file://iam-policy.json
-
-# 4. Create the IRSA service account bound to that policy
-eksctl create iamserviceaccount \
-  --cluster upwind-lab --region us-east-1 \
-  --namespace kube-system --name aws-load-balancer-controller \
-  --attach-policy-arn arn:aws:iam::<account-id>:policy/AWSLoadBalancerControllerIAMPolicy \
-  --approve
-
-# 5. Install the AWS Load Balancer Controller
-helm repo add eks https://aws.github.io/eks-charts
-helm repo update
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
-  --namespace kube-system \
-  --set clusterName=upwind-lab \
-  --set serviceAccount.create=false \
-  --set serviceAccount.name=aws-load-balancer-controller
-
-# 6. Install the Gateway API CRDs
-kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
-
-# 7. Install Falco
-helm repo add falcosecurity https://falcosecurity.github.io/charts
-helm repo update
-helm install falco falcosecurity/falco \
-  --namespace security-tooling --create-namespace \
-  --set tty=true
-
-# 8. Deploy the app
-kubectl apply -f manifests/
-
-# 9. Confirm the ALB is provisioned (can take a minute or two)
-kubectl get gateway juice-shop-gateway -n juice-shop
+./scripts/bootstrap.sh
 ```
+
+Provisions the cluster, sets up IRSA and the AWS Load Balancer Controller, installs the Gateway API CRDs and Falco, then deploys the app. One-time per cluster, safe to rerun for a fresh rebuild after `teardown.sh`.
+
+What it does, step by step (see the script itself for the exact commands):
+
+1. Provision the EKS cluster (`t3.small` x2, single NAT Gateway)
+2. Associate an OIDC provider (needed for IRSA)
+3. Create the AWS Load Balancer Controller's IAM policy
+4. Create the IRSA service account bound to that policy
+5. Install the AWS Load Balancer Controller
+6. Install the Gateway API CRDs
+7. Install Falco
+8. Deploy the app (`kubectl apply -f manifests/`)
+9. Wait for the ALB to be provisioned and confirm it's ready
 
 Full walkthrough, including per-exploit demo steps, lives in the lab guide (vault note, not in this repo).
 
 ## Tear down
 
-Run after every recording/rehearsal session, don't leave this running:
-
 ```bash
-# Remove app + Gateway resources
-kubectl delete -f manifests/
-
-# Remove Falco and the AWS Load Balancer Controller
-helm uninstall falco -n security-tooling
-helm uninstall aws-load-balancer-controller -n kube-system
-
-# Delete the cluster (also removes the ALB/NLB and node group)
-eksctl delete cluster --name upwind-lab --region us-east-1
+./scripts/teardown.sh
 ```
 
-Verify no orphaned load balancers remain in the AWS console after teardown, the AWS Load Balancer Controller usually cleans these up on `Gateway` deletion, but confirm before walking away.
+Run after every recording/rehearsal session, don't leave the lab running.
+
+What it does: removes the app and Gateway resources, waits for the ALB to actually deprovision, uninstalls Falco and the AWS Load Balancer Controller, deletes the cluster, and deletes the Load Balancer Controller's IAM policy (created outside CloudFormation, so it isn't cleaned up by cluster deletion alone).
+
+Verify no orphaned load balancers remain in the AWS console after teardown regardless, the AWS Load Balancer Controller usually cleans these up on `Gateway` deletion, but confirm before walking away.
 
 ## Status
 
@@ -112,6 +73,6 @@ Re-architecting ingress: `ingress-nginx` (originally used) was found to be offic
 - [x] A05:2021 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded
 - [ ] Re-record exploit demos against the rebuilt cluster (new ALB address, Gateway API instead of ingress-nginx)
 
-Architecture diagram and presentation bullets drafted, both need a small update to reflect the new ingress path.
+Architecture diagram updated to reflect the new ingress path (t3.small, Gateway API / AWS Load Balancer Controller). Bootstrap/teardown steps converted into scripts (`scripts/bootstrap.sh`, `scripts/teardown.sh`).
 
 Remaining: rebuild cluster on Gateway API, re-verify all three exploits, re-record, final deck assembly, full rehearsal run-through, cluster teardown after recording.
