@@ -13,7 +13,7 @@ This repo holds the build and presentation assets for that exercise:
 
 ## Environment
 
-- **Cloud:** AWS EKS, v1.36, 2x t3.medium managed nodegroup
+- **Cloud:** AWS EKS, v1.36, 2x t3.small managed nodegroup
 - **Target application:** [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), intentionally vulnerable, deployed for authorized demonstration purposes only
 - **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx`, that project was officially retired March 31, 2026; see the lab guide's design decisions log for the full reasoning
 - **Detection:** [Falco](https://falco.org) (Helm), DaemonSet, one pod per node, eBPF/kernel-level runtime monitoring
@@ -37,7 +37,7 @@ One-time per cluster, then reusable across rebuilds:
 # 1. Provision the cluster
 eksctl create cluster \
   --name upwind-lab --region us-east-1 --version 1.36 \
-  --nodegroup-name standard-workers --node-type t3.medium --nodes 2 --managed
+  --nodegroup-name standard-workers --node-type t3.small --nodes 2 --managed
 
 # 2. Associate an OIDC provider (needed for IRSA)
 eksctl utils associate-iam-oidc-provider \

@@ -40,10 +40,10 @@
         <mxCell id="falco" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fbe1e1;strokeColor=#af4d4d;strokeWidth=2;fontSize=13;fontFamily=Helvetica;" value="&lt;b&gt;DaemonSet: Falco&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px; color: rgb(175, 77, 77);&quot;&gt;Runtime Detection via&lt;br&gt;kernel + eBPF events&lt;/span&gt;" vertex="1">
           <mxGeometry height="100" width="420" x="710" y="563.76" as="geometry" />
         </mxCell>
-        <mxCell id="node-label" parent="1" style="text;html=1;fontSize=12;fontStyle=1;fontColor=#9a9a9a;fontFamily=Helvetica;align=left;spacing=0;" value="NODE VIEW · DATA PLANE (2× t3.medium managed nodegroup)" vertex="1">
+        <mxCell id="node-label" parent="1" style="text;html=1;fontSize=12;fontStyle=1;fontColor=#9a9a9a;fontFamily=Helvetica;align=left;spacing=0;" value="NODE VIEW · DATA PLANE (2× t3.small managed nodegroup)" vertex="1">
           <mxGeometry height="24" width="600" x="145" y="793" as="geometry" />
         </mxCell>
-        <mxCell id="node1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=14;fillColor=#f2f2f2;strokeColor=#777777;strokeWidth=2;fontSize=14;fontStyle=1;fontFamily=Helvetica;shadow=1;" value="Node 1 · t3.medium" vertex="1">
+        <mxCell id="node1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=14;fillColor=#f2f2f2;strokeColor=#777777;strokeWidth=2;fontSize=14;fontStyle=1;fontFamily=Helvetica;shadow=1;" value="Node 1 · t3.small" vertex="1">
           <mxGeometry height="290" width="480" x="140" y="828" as="geometry" />
         </mxCell>
         <mxCell id="node1-ec2" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3D;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;fontFamily=Helvetica;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" value="Amazon EC2" vertex="1">
@@ -55,7 +55,7 @@
         <mxCell id="node1-note" parent="1" style="text;html=1;fontSize=11;fontColor=#999999;fontFamily=Helvetica;align=center;verticalAlign=middle;whiteSpace=wrap;" value="&lt;b&gt;+ whichever of ingress-nginx / juice-shop the scheduler places here&lt;/b&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp;(not pinned)&lt;/b&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="400" x="180" y="978" as="geometry" />
         </mxCell>
-        <mxCell id="node2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=14;fillColor=#f2f2f2;strokeColor=#777777;strokeWidth=2;fontSize=14;fontStyle=1;fontFamily=Helvetica;shadow=1;" value="Node 2 · t3.medium" vertex="1">
+        <mxCell id="node2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=18;spacingTop=14;fillColor=#f2f2f2;strokeColor=#777777;strokeWidth=2;fontSize=14;fontStyle=1;fontFamily=Helvetica;shadow=1;" value="Node 2 · t3.small" vertex="1">
           <mxGeometry height="290" width="480" x="680" y="828" as="geometry" />
         </mxCell>
         <mxCell id="node2-ec2" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3D;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=10;fontStyle=0;fontFamily=Helvetica;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" value="Amazon EC2" vertex="1">
