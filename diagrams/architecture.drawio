@@ -13,7 +13,7 @@
         <mxCell id="cp" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3D;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;fontFamily=Helvetica;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eks;" value="Amazon EKS&#xa;upwind-lab (control plane)" vertex="1">
           <mxGeometry height="64" width="64" x="686" y="164" as="geometry" />
         </mxCell>
-        <mxCell id="ingress" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4f5f2;strokeColor=#3f8f7f;strokeWidth=2;fontSize=14;fontFamily=Helvetica;shadow=1;" value="&lt;b&gt;Gateway API&lt;/b&gt;&lt;br&gt;&lt;span style="font-size:10px;color:#3f8f7f;"&gt;AWS Load Balancer Controller&lt;/span&gt;" vertex="1">
+        <mxCell id="ingress" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4f5f2;strokeColor=#3f8f7f;strokeWidth=2;fontSize=14;fontFamily=Helvetica;shadow=1;" value="&lt;b&gt;Gateway API&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:#3f8f7f;&quot;&gt;AWS Load Balancer Controller&lt;/span&gt;" vertex="1">
           <mxGeometry height="70" width="260" x="520" y="279" as="geometry" />
         </mxCell>
         <mxCell id="elb" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3D;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=0;fontFamily=Helvetica;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.application_load_balancer;" value="Elastic Load Balancing&lt;br&gt;Created by AWS Load Balancer Controller&amp;nbsp;&lt;div&gt;(Gateway API)&lt;/div&gt;" vertex="1">
