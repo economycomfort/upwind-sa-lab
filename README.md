@@ -6,6 +6,7 @@ Supporting assets for the Upwind Solutions Architect take-home technical assessm
 
 This repo holds the build and presentation assets for that exercise:
 
+- [LAB_GUIDE.md](./LAB_GUIDE.md): architecture, setup, exploitation, hardening, incident response, lessons learned
 - Kubernetes manifests (namespace, deployment, service, Gateway API routing, security tooling)
 - Architecture diagram (draw.io source + SVG export)
 - Presentation slides / speaker notes / screenshots
@@ -15,7 +16,7 @@ This repo holds the build and presentation assets for that exercise:
 
 - **Cloud:** AWS EKS, v1.36, 2x t3.small managed nodegroup
 - **Target application:** [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), intentionally vulnerable, deployed for authorized demonstration purposes only
-- **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx`, that project was officially retired March 31, 2026; see the lab guide's design decisions log for the full reasoning
+- **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx`, that project was officially retired March 31, 2026; see the lab guide's Architecture section for the full reasoning
 - **Detection:** [Falco](https://falco.org) (Helm), DaemonSet, one pod per node, eBPF/kernel-level runtime monitoring
 - **Cluster is ephemeral**, provisioned for build/rehearsal sessions and torn down between them; nothing here should be treated as a persistent or production environment
 
@@ -23,6 +24,7 @@ This repo holds the build and presentation assets for that exercise:
 
 ```
 .
+├── LAB_GUIDE.md     # Full build/exploit/hardening guide
 ├── manifests/       # Kubernetes YAML (namespace, deployment, service, gateway, httproute)
 ├── diagrams/        # Architecture diagram (drawio source + SVG export)
 ├── presentation/    # Slides, speaker notes, screenshots
@@ -55,7 +57,7 @@ What it does, step by step (see the script itself for the exact commands):
 8. Deploy the app (`kubectl apply -f manifests/`)
 9. Wait for the ALB to be provisioned and confirm it's ready
 
-Full walkthrough, including per-exploit demo steps, lives in the lab guide (vault note, not in this repo).
+Full walkthrough, including per-exploit demo steps, lives in [LAB_GUIDE.md](./LAB_GUIDE.md).
 
 ## Tear down
 
