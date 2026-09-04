@@ -76,15 +76,15 @@ Verify no orphaned load balancers remain in the AWS console after teardown regar
 
 Ingress re-architected: `ingress-nginx` (originally used) was found to be officially retired as of March 31, 2026. Migrated to Gateway API via the AWS Load Balancer Controller; rebuilt and validated end to end.
 
-- [x] A01:2021 Broken Access Control (IDOR via basket ID), demoed and recorded (see Recordings)
-- [x] A03:2021 Injection (SQL injection login bypass), demoed and recorded (see Recordings)
-- [x] A05:2021 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded (see Recordings)
+- [x] A01:2025 Broken Access Control (IDOR via basket ID), demoed and recorded (see Recordings)
+- [x] A05:2025 Injection (SQL injection login bypass), demoed and recorded (see Recordings)
+- [x] A02:2025 Security Misconfiguration (exposed /ftp directory, plus a bonus null-byte extension-filter bypass), demoed and recorded (see Recordings)
 
 Recordings remain valid despite the ingress migration: all three exploits demonstrate application-layer behavior via curl/browser against the app itself, they don't depend on or showcase the ingress mechanism, only the LB hostname changed.
 
 Architecture diagram updated to reflect the current ingress path (t3.small, Gateway API / AWS Load Balancer Controller). Bootstrap/teardown steps converted into scripts (`scripts/bootstrap.sh`, `scripts/teardown.sh`).
 
-Remaining: final deck assembly, full rehearsal run-through, cluster teardown after recording.
+Deck finalized, demos recorded, and the cluster has been torn down. This repo is at its final version.
 
 ## AI Disclosure from the Author
 AI ([Claude](https://claude.ai) Sonnet 5 and Haiku 5) was used during the creation, test, and documentation of this lab.  
