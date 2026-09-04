@@ -36,6 +36,7 @@ This repo holds the build and presentation assets for that exercise:
 
 Exploit demo recordings (video) are too large for this repo and live in Google Drive instead: [click here](https://drive.google.com/drive/folders/1dxv0Gircm8qBIaSG3OWoAefVsSxF1Y1N?usp=sharing)
 
+**NOTE:** Recordings may show OWASP technique codes from 2021 in some places.  These references have been updated in material within this repository, however it wasn't worth re-recording the demo in service of a superficial change.
 
 ## Spin up
 

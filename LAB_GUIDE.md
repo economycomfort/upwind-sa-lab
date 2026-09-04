@@ -90,7 +90,7 @@ Verify no orphaned load balancers remain in the AWS console after teardown regar
 
 Juice Shop is built around a challenge scoreboard, so pick exploits that are clean to show live and map directly to named OWASP Top 10 categories. These three give variety (access control, injection, config) without overlapping, and each has a crisp "what an attacker gains" story.
 
-### 1. A01:2021, Broken Access Control (IDOR)
+### 1. A01:2025, Broken Access Control (IDOR)
 
 - **What/why:** App trusts a client-supplied ID (basket ID) without verifying the requesting user owns it.
 - **Attacker gains:** Read another user's data, classic horizontal privilege escalation.
@@ -130,7 +130,7 @@ Juice Shop is built around a challenge scoreboard, so pick exploits that are cle
   }).then(r => r.json()).then(console.log)
   ```
 
-### 2. A03:2021, Injection (SQL injection login bypass)
+### 2. A05:2025, Injection (SQL injection login bypass)
 
 - **What/why:** Login query concatenates user input directly into SQL instead of using parameterized queries.
 - **Attacker gains:** Full account takeover without credentials.
@@ -168,7 +168,7 @@ Juice Shop is built around a challenge scoreboard, so pick exploits that are cle
   Decode the returned `authentication.token` the same way.
 - Resetting Juice Shop also clears the Bob/Alice test accounts, recreate them for a combined run with A01.
 
-### 3. A05:2021, Security Misconfiguration
+### 3. A02:2025, Security Misconfiguration
 
 - **What/why:** An exposed directory (`/ftp`) with files that were never meant to be public.
 - **Attacker gains:** Information disclosure, potential further foothold.
