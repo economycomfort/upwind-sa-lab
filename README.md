@@ -6,7 +6,7 @@ Supporting assets for the Upwind Solutions Architect take-home technical assessm
 
 This repo holds the build and presentation assets for that exercise:
 
-- [LAB_GUIDE.md](./LAB_GUIDE.md): architecture, setup, exploitation, hardening, incident response, lessons learned
+- [README.md](./README.md): this file
 - Kubernetes manifests (namespace, deployment, service, Gateway API routing, security tooling)
 - Architecture diagram (draw.io source + SVG export)
 - Presentation slides / speaker notes / screenshots
@@ -24,7 +24,6 @@ This repo holds the build and presentation assets for that exercise:
 
 ```
 .
-├── LAB_GUIDE.md     # Full build/exploit/hardening guide
 ├── manifests/       # Kubernetes YAML (namespace, deployment, service, gateway, httproute)
 ├── diagrams/        # Architecture diagram (drawio source + SVG export)
 ├── presentation/    # Slides, speaker notes, screenshots
@@ -52,13 +51,11 @@ What it does, step by step (see the script itself for the exact commands):
 2. Associate an OIDC provider (needed for IRSA)
 3. Create the AWS Load Balancer Controller's IAM policy
 4. Create the IRSA service account bound to that policy
-5. Install the AWS Load Balancer Controller, then wait for it to actually be ready (its admission webhook needs live pod endpoints before anything else can apply Service/Gateway objects)
+5. Install the AWS Load Balancer Controller via `helm`, then wait for it to actually be ready (its admission webhook needs live pod endpoints before anything else can apply Service/Gateway objects)
 6. Install the Gateway API CRDs
-7. Install Falco
+7. Install Falco via `helm`
 8. Deploy the app (`kubectl apply -f manifests/`)
 9. Wait for the ALB to be provisioned and confirm it's ready
-
-Full walkthrough, including per-exploit demo steps, lives in [LAB_GUIDE.md](./LAB_GUIDE.md).
 
 ## Tear down
 
