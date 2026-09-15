@@ -9,14 +9,14 @@ This repo holds the build and presentation assets for that exercise:
 - [README.md](./README.md): this file
 - Kubernetes manifests (namespace, deployment, service, Gateway API routing, security tooling)
 - Architecture diagram (draw.io source + SVG export)
-- Presentation slides / speaker notes / screenshots
+- Presentation slides
 - Scripts to stand up and tear down the lab (`scripts/`)
 
 ## Environment
 
 - **Cloud:** AWS EKS, v1.36, 2x t3.small managed nodegroup
 - **Target application:** [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), intentionally vulnerable, deployed for authorized demonstration purposes only
-- **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx`, that project was officially retired March 31, 2026; see the lab guide's Architecture section for the full reasoning
+- **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx` — that project was officially retired March 31, 2026 (see Status below for the full migration reasoning)
 - **Detection:** [Falco](https://falco.org) (Helm), DaemonSet, one pod per node, eBPF/kernel-level runtime monitoring
 - **Cluster is ephemeral**, provisioned for build/rehearsal sessions and torn down between them; nothing here should be treated as a persistent or production environment
 
@@ -26,7 +26,7 @@ This repo holds the build and presentation assets for that exercise:
 .
 ├── manifests/       # Kubernetes YAML (namespace, deployment, service, gateway, httproute)
 ├── diagrams/        # Architecture diagram (drawio source + SVG export)
-├── presentation/    # Slides, speaker notes, screenshots
+├── presentation/    # Slides
 ├── scripts/         # bootstrap.sh, teardown.sh
 └── README.md
 ```
