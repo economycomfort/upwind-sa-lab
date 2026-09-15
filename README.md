@@ -16,7 +16,7 @@ This repo holds the build and presentation assets for that exercise:
 
 - **Cloud:** AWS EKS, v1.36, 2x t3.small managed nodegroup
 - **Target application:** [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), intentionally vulnerable, deployed for authorized demonstration purposes only
-- **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx` — that project was officially retired March 31, 2026 (see Status below for the full migration reasoning)
+- **Ingress:** Gateway API via the [AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/), fronted by an AWS ALB. Not `ingress-nginx`, that project was officially retired March 31, 2026 (see Status below for the full migration reasoning)
 - **Detection:** [Falco](https://falco.org) (Helm), DaemonSet, one pod per node, eBPF/kernel-level runtime monitoring
 - **Cluster is ephemeral**, provisioned for build/rehearsal sessions and torn down between them; nothing here should be treated as a persistent or production environment
 
@@ -83,21 +83,7 @@ Architecture diagram updated to reflect the current ingress path (t3.small, Gate
 
 Deck finalized, demos recorded, and the cluster has been torn down. This repo is at its final version.
 
-## AI Disclosure from the Author
-AI ([Claude](https://claude.ai) Sonnet 5 and Haiku 5) was used during the creation, test, and documentation of this lab.  
+## AI Disclosure
+AI ([Claude](https://claude.ai) Sonnet 5 and Haiku 5) was used throughout this lab's build, testing, and documentation: scaffolding unfamiliar Kubernetes concepts, iterating on the setup/teardown scripts, critiquing early design decisions, and cleaning up documentation and presentation formatting.
 
-AI is a powerful tool, and I am open about its use:
-
-- Distilling lab requirements into mappable demos
-- Help with crafting and validating repeatable lab setup/teardown (with significant iteration)
-- Understanding k8s concepts ("Teach me about DaemonSets and provide a self-guided demo using `kind`")
-- Critiquing early lab design
-- Distilling scratch notes from testing and folding into the overall lab plan.
-- Documentation edits, formatting, wording, and cleanup.
-- Creating a "branding feel" for the presentation
-- Scripting advice ("What's the best way to obfuscate my AWS Account ID from bootstrap.sh before its pushed to Github?")
-- Help with analyzing transcripts for feedback on flow, content, and opportunities to improve.
-
-AI cannot replace concept mastery or fill in for decades of technology consultation and field pre-sales experience to a technically adept market.  However, AI enables me to deliver an uplevelled deliverable in comparison to what would be provided without its use, and on a much quicker timeframe.  With this, I acknowledge that the end result is mine, and mistakes in its output are mine, and that I have done as much due diligence as possible to ensure quality output that represents my skillset.
-
-It's with this mindset that I approach the use of AI as a tool in my bag, and I would hope that other practitioners are viewing its use within similar constraints. 
+AI doesn't substitute for concept mastery or the field pre-sales experience this lab is meant to demonstrate. It let me produce a better deliverable, faster. The end result, and any mistakes in it, are mine.
